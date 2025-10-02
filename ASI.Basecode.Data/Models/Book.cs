@@ -18,5 +18,6 @@ namespace ASI.Basecode.Data.Models
         public string Author { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedTime { get; set; }
+        public DateTime PublishedDate { get; set; } // <-- Add this line
     }
 }

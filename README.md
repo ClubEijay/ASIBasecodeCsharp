@@ -10,7 +10,7 @@ This is the base code that will be used during the bridge and jumpstart program.
 2.  Change connection strings on the `appsettings.json` base on your server
 3.  Set `ASI.Basecode.WebApp` as the Startup project.
 4.  Clean and ReBuild the solution.
-
+ 
 ## Code Structure
 
 - `ASI.Basecode.Data`
