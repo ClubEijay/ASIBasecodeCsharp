@@ -1,34 +1,56 @@
 ﻿@model IEnumerable<ASI.Basecode.Data.Models.Book>
 
-<div class="container pt-5">
-    <a asp-controller="Book" asp-action="Create" class="btn btn-outline-primary mb-3">Create Book</a>
+<div class="books-container">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2><i class="fas fa-books"></i> My Library</h2>
+            <a asp-controller="Book" asp-action="Create" class="create-book-btn">
+                <i class="fas fa-plus"></i> Add New Book
+            </a>
+        </div>
 
-    <div class="row">
-        @if (Model == null || !Model.Any())
-        {
-            <h4 class="card-text font-weight-bold">No books to display</h4>
-        }
-        else
-        {
-            @foreach (var book in Model)
+        <div class="row">
+            @if (Model == null || !Model.Any())
             {
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <div class="card-body">
-                            <h4 class="card-text font-weight-bold">@book.Title</h4>
-                            <p class="card-text"><b>@book.Description</b></p>
-                            <p class="card-text">By <b>@book.Author</b></p>
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <small class="text-muted">@book.CreatedTime.ToString("dd/MM/yyyy")</small>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <a href="@Url.Action("Edit", "Book", new { id = book.Id })" class="btn btn-sm btn-warning mr-2">Edit</a>
-                                <a href="@Url.Action("Delete", "Book", new { id = book.Id })" class="btn btn-sm btn-danger">Delete</a>
-                            </div>
-                        </div>
+                <div class="col-12 text-center">
+                    <div class="empty-library">
+                        <i class="fas fa-book-open fa-3x mb-3 text-muted"></i>
+                        <h4 class="text-muted">Your library is empty</h4>
+                        <p class="text-muted">Start adding some books to your collection!</p>
                     </div>
                 </div>
             }
-        }
+            else
+            {
+                @foreach (var book in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="book-card">
+                            <div class="card-body">
+                                <h4 class="book-title">@book.Title</h4>
+                                <p class="book-description">@book.Description</p>
+                                <p class="book-author">By @book.Author</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">@book.CreatedTime.ToString("dd/MM/yyyy")</small>
+                                    <div class="action-buttons">
+                                        <a href="@Url.Action("Edit", new { id = book.Id })" class="btn btn-sm btn-edit">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                        <a href="@Url.Action("Delete", new { id = book.Id })" class="btn btn-sm btn-delete">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
     </div>
 </div>
+
+@section Styles {
+    <link href="~/css/book-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+}

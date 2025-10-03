@@ -1,0 +1,144 @@
+/* Common styles */
+body {
+    background-color: #f0f2ff;
+}
+
+.nav-header {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Home/Index styles */
+.welcome-section {
+    text-align: center;
+    padding: 4rem 0;
+    margin-top: 2rem;
+}
+
+.bookshelf-icon {
+    font-size: 4rem;
+    color: #0066cc;
+    margin-bottom: 2rem;
+}
+
+.welcome-title {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.book-description {
+    color: #666;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+
+.glow-button {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #0066cc, #0099ff);
+    border: none;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.glow-button:hover {
+    box-shadow: 0 0 20px rgba(0,102,204,0.5);
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+}
+
+/* Book/Index styles */
+.books-container {
+    padding: 2rem 0;
+}
+
+.book-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+.book-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(45deg, #0066cc, #0099ff);
+}
+
+.book-card .card-body {
+    padding: 1.5rem;
+}
+
+.book-title {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.book-description {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.book-author {
+    color: #0066cc;
+    font-weight: 500;
+}
+
+.action-buttons {
+    margin-top: 1rem;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: #000;
+    margin-right: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-edit:hover, .btn-delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Create Book button */
+.create-book-btn {
+    margin-bottom: 2rem;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    background: linear-gradient(45deg, #0066cc, #0099ff);
+    border: none;
+    color: white;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.create-book-btn:hover {
+    box-shadow: 0 0 20px rgba(0,102,204,0.5);
+    transform: translateY(-2px);
+    color: white;
+    text-decoration: none;
+}

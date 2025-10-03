@@ -1,38 +1,43 @@
 @model ASI.Basecode.Data.Models.Book
 
-<div class="container pt-5">
-    <h1>Edit Book</h1>
-
-    <form method="post" asp-action="Edit">
-        <input type="hidden" asp-for="Id" />
-        <input type="hidden" asp-for="CreatedBy" />
-        <input type="hidden" asp-for="CreatedTime" />
-        
-        <div class="form-group">
-            <label>Title</label>
-            <input type="text" class="form-control" asp-for="Title" placeholder="Title....">
-            <span asp-validation-for="Title" class="text-danger"></span>
+<div class="container pt-5 d-flex justify-content-center align-items-center" style="min-height:70vh;">
+    <div class="book-card" style="max-width: 500px; width: 100%;">
+        <div class="card-body">
+            <h2 class="book-title text-center mb-4"><i class="fas fa-edit"></i> Edit Book</h2>
+            <form method="post" asp-action="Edit">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="CreatedBy" />
+                <input type="hidden" asp-for="CreatedTime" />
+                <div class="form-group mb-3">
+                    <label>Title</label>
+                    <input type="text" class="form-control" asp-for="Title" placeholder="Title....">
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label>Author</label>
+                    <input type="text" class="form-control" asp-for="Author" placeholder="Author's name....">
+                    <span asp-validation-for="Author" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label>Description</label>
+                    <textarea class="form-control" rows="3" asp-for="Description" placeholder="Description...."></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-4">
+                    <label>Published Date</label>
+                    <input type="date" class="form-control" asp-for="PublishedDate">
+                    <span asp-validation-for="PublishedDate" class="text-danger"></span>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="glow-button"><i class="fas fa-save"></i> Save</button>
+                    <a asp-action="Index" class="glow-button" style="background: #ccc; color: #333;"><i class="fas fa-arrow-left"></i> Cancel</a>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label>Author</label>
-            <input type="text" class="form-control" asp-for="Author" placeholder="Author's name....">
-            <span asp-validation-for="Author" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label>Description</label>
-            <textarea class="form-control" rows="3" asp-for="Description" placeholder="Description...."></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label>Published Date</label>
-            <input type="date" class="form-control" asp-for="PublishedDate">
-            <span asp-validation-for="PublishedDate" class="text-danger"></span>
-        </div>
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-    </form>
+    </div>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@section Styles {
+    <link href="~/css/book-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 }
