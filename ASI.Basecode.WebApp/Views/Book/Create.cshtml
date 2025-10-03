@@ -19,6 +19,11 @@
             <textarea class="form-control" rows="3" asp-for="Description" placeholder="Description...."></textarea>
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
+        <div class="form-group">
+            <label>Published Date</label>
+            <input type="date" class="form-control" asp-for="PublishedDate">
+            <span asp-validation-for="PublishedDate" class="text-danger"></span>
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

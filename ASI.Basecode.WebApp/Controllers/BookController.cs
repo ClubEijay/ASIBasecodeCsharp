@@ -16,7 +16,7 @@ namespace ASI.Basecode.WebApp.Controllers
 
         public IActionResult Index()
         {
-            List <Book> books = _bookService.ViewBooks() ?? new();
+            List<Book> books = _bookService.ViewBooks() ?? new();
             return View(books);
         }
 
@@ -28,7 +28,49 @@ namespace ASI.Basecode.WebApp.Controllers
         [HttpPost]
         public IActionResult Create(Book book)
         {
-            _bookService.AddBook(book);
+            if (ModelState.IsValid)
+            {
+                _bookService.AddBook(book);
+                return RedirectToAction("Index");
+            }
+            return View(book);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var book = _bookService.GetBook(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Book book)
+        {
+            if (ModelState.IsValid)
+            {
+                _bookService.UpdateBook(book);
+                return RedirectToAction("Index");
+            }
+            return View(book);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var book = _bookService.GetBook(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            _bookService.DeleteBook(id);
             return RedirectToAction("Index");
         }
     }

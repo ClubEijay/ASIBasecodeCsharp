@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using ASI.Basecode.Data.Models;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace ASI.Basecode.Data
 {
@@ -90,5 +91,23 @@ namespace ASI.Basecode.Data
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AsiBasecodeDB;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True");
+            }
+        }
+    }
+
+    public class AsiBasecodeDBContextFactory : IDesignTimeDbContextFactory<AsiBasecodeDBContext>
+    {
+        public AsiBasecodeDBContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<AsiBasecodeDBContext>();
+            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AsiBasecodeDB;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True");
+            return new AsiBasecodeDBContext(optionsBuilder.Options);
+        }
     }
 }

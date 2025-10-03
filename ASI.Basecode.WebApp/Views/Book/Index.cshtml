@@ -18,8 +18,12 @@
                             <h4 class="card-text font-weight-bold">@book.Title</h4>
                             <p class="card-text"><b>@book.Description</b></p>
                             <p class="card-text">By <b>@book.Author</b></p>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
                                 <small class="text-muted">@book.CreatedTime.ToString("dd/MM/yyyy")</small>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <a href="@Url.Action("Edit", "Book", new { id = book.Id })" class="btn btn-sm btn-warning mr-2">Edit</a>
+                                <a href="@Url.Action("Delete", "Book", new { id = book.Id })" class="btn btn-sm btn-danger">Delete</a>
                             </div>
                         </div>
                     </div>
